@@ -1,2 +1,7 @@
 def rhomb(n: int):
-    pass
+    assert n % 2 == 1, 'Enter an odd number'
+    for i in range(2 * n - 1):
+        if i < n:
+            print('-' * (n - i - 1), '*' * (i * 2 + 1), '-' * (n - i - 1))
+        else:
+            print('-' * (i - n + 1), '*' * ((2 * n - 1) * 2 - 1 - i * 2), '-' * (i - n + 1))

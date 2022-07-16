@@ -1,0 +1,18 @@
+def drop_while(arr, pred):
+    slice_index = 0
+    for i in arr:
+        if pred == 'is_even':
+            if i % 2 == 0:
+                slice_index += 1
+            else:
+                break
+        elif pred == 'is_odd':
+            if i % 2 == 1:
+                slice_index += 1
+            else:
+                break
+    return arr[slice_index:]
+
+
+if __name__ == '__main__':
+    print(drop_while([2, 6, 4, 10, 1, 5, 4, 3], 'is_even'))

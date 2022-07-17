@@ -1,2 +1,9 @@
-def calc_length_array(arr: list) -> int:
-    pass  
+def length_list_dc(lst: list) -> int:
+    '''
+    The function calculates the length of the list using the "Divide and Conquer" algorithm with complexity O(n).
+    :param lst:
+    :return: int
+    '''
+    if not lst:
+        return 0
+    return 1 + length_list_dc(lst[1:])

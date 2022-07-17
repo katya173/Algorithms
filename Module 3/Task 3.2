@@ -1,2 +1,19 @@
-def binary_search(arr: list, n: int) -> int:
-    pass
+def binary_search_dc(lst: list, n) -> bool:
+    '''
+    The function implements a binary search for an element in the list 
+    using the "Divide and Conquer" algorithm with complexity O(log n)
+    :param lst:
+    :param n:
+    :return: bool
+    '''
+    if len(lst) == 0:
+        return False
+    else:
+        middle = len(lst) // 2
+        if n == lst[middle]:
+            return True
+        else:
+            if n > lst[middle]:
+                return binary_search_dc(lst[middle + 1:], n)
+            else:
+                return binary_search_dc(lst[:middle], n)

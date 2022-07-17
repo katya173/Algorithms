@@ -1,0 +1,21 @@
+from queue import Queue
+import random
+
+
+def search_min_max_queue(n: int):
+    '''
+    The function finds the minimum and maximum queue element with complexity O(n)
+    :param n: int
+    :return:
+    '''
+    tmp_queue = Queue()
+    min_queue = 100
+    max_queue = 0
+    for i in range(n):
+        rnd_digit = random.randint(0, 100)
+        if rnd_digit < min_queue:
+            min_queue = rnd_digit
+        if rnd_digit > max_queue:
+            max_queue = rnd_digit
+        tmp_queue.put(rnd_digit)
+    return (f'The minimum queue element is: {min_queue}. The minimum queue element is: {max_queue}')

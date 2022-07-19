@@ -1,0 +1,28 @@
+import random
+
+
+def calculate_min_cost() -> int:
+    """
+    The function calculates the minimum cost of the trip
+    :return: int
+    """
+    stations_all_prices = {}
+    stations_min_cost = {0: {}}
+    n = random.randint(5, 10)
+    for start in range(n - 1):
+        stations_all_prices[start] = {}  # Словарь весов ребер
+        for finish in range(start + 1, n):
+            if len(stations_all_prices[start]) == 0:
+                stations_all_prices[start][finish] = random.randint(1, 10)
+            else:
+                stations_all_prices[start][finish] = stations_all_prices[start][finish - 1] + random.randint(1, 10)
+            if start == 0:
+                stations_min_cost[start][finish] = stations_all_prices[start][finish]  # Первичный "поджиг" вершин
+            else:
+                if ((stations_all_prices[start][finish] + stations_min_cost[0][start]) <
+                        stations_min_cost[0][finish]):  # "Переподжиг", если найден более короткий маршрут
+                    stations_min_cost[0][finish] = (stations_all_prices[start][finish] + stations_min_cost[0][start])
+    return stations_min_cost[0][finish]
+
+
+print(calculate_min_cost())
